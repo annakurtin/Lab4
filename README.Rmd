@@ -31,6 +31,21 @@ The learning objectives of today's lab are;
 Note I have supressed the output from loading packages to save space. This week we will load these packages:
 
 `packages <- c("tidyverse", "adehabitatHS", "adehabitatHR", "mapview", "tmap", "sf","terra", "here","ggplot2","colorRamps", "stars")`
+```{r}
+## First specify the packages of interest
+packages <- c("tidyverse", "adehabitatHS", "adehabitatHR", "mapview", "tmap", "sf","terra", "here","ggplot2","colorRamps", "stars")
+
+## Now check each packages, if it needs to be installed, install it, then load it
+package.check <- lapply(
+  packages,
+  FUN = function(x) {
+    if (!require(x, character.only = TRUE)) {
+      install.packages(x, dependencies = TRUE)
+      library(x, character.only = TRUE)
+    }
+  }
+)
+```
 
 ```{r load packages, include = FALSE}
 #function to install and load required packages
